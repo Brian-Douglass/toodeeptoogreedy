@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmryrwq6dodn5"]
+
+[ext_resource type="Theme" uid="uid://c8cqncsqlplyu" path="res://main_theme.tres" id="1_afgys"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_hr3x8"]
+[ext_resource type="Texture2D" uid="uid://c6rme2o6dyaoj" path="res://art/tile_0104.png" id="2_wr8fa"]
+[ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="3_axss8"]
+
+[sub_resource type="Gradient" id="Gradient_yrrnd"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y10xg"]
+gradient = SubResource("Gradient_yrrnd")
+width = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_dqwbw"]
+font_size = 8
+shadow_size = 4
+shadow_color = Color(0.206229, 0.151873, 0.0665162, 0.576471)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hr3x8")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_y10xg")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.5
+offset_right = 106.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("1_afgys")
+text = "Too Deep, Too Greedy"
+label_settings = SubResource("LabelSettings_dqwbw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -21.0
+offset_right = 30.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+text = "Continue"
+
+[node name="NewRun" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+text = "New Run"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+text = "Exit"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(52, 88)
+rotation = 3.14159
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_wr8fa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(48, 95)
+rotation = -1.5708
+texture = ExtResource("3_axss8")
+
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/NewRun" to="." method="_on_new_run_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

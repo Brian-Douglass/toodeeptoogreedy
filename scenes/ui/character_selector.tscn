@@ -1,0 +1,196 @@
+[gd_scene load_steps=13 format=3 uid="uid://ck8rvflgewkfv"]
+
+[ext_resource type="Script" path="res://scenes/ui/character_selector.gd" id="1_p8yyw"]
+[ext_resource type="Resource" uid="uid://bap73qwiy633" path="res://scenes/Run/run_startup.tres" id="2_pxo7w"]
+[ext_resource type="Theme" uid="uid://c8cqncsqlplyu" path="res://main_theme.tres" id="2_xijqi"]
+[ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="4_a5ca3"]
+[ext_resource type="Texture2D" uid="uid://cqcal03735mv8" path="res://art/tile_0118.png" id="4_pqyse"]
+[ext_resource type="Texture2D" uid="uid://f7tgpjiguspe" path="res://art/tile_0129.png" id="5_cyldt"]
+[ext_resource type="Texture2D" uid="uid://boklhiqs1414d" path="res://art/tile_0115.png" id="6_icpre"]
+
+[sub_resource type="Gradient" id="Gradient_yrrnd"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y10xg"]
+gradient = SubResource("Gradient_yrrnd")
+width = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_dqwbw"]
+font_size = 18
+shadow_size = 0
+shadow_color = Color(0.206229, 0.151873, 0.0665162, 0.576471)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qyqg7"]
+font_size = 14
+shadow_size = 0
+shadow_color = Color(0.206229, 0.151873, 0.0665162, 0.576471)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_jgajx"]
+
+[node name="CharacterSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8yyw")
+run_startup = ExtResource("2_pxo7w")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_y10xg")
+
+[node name="CharacterText" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_top = 6.0
+offset_right = 49.0
+offset_bottom = 46.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="CharacterText"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_xijqi")
+text = "Miner"
+label_settings = SubResource("LabelSettings_dqwbw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="CharacterText"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_xijqi")
+text = "Digs deeply, but safely?"
+label_settings = SubResource("LabelSettings_qyqg7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterPortrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -72.0
+offset_right = 53.0
+offset_bottom = -32.0
+grow_vertical = 0
+texture = ExtResource("4_a5ca3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -28.0
+offset_right = -12.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Start Run"
+
+[node name="CharacterButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 1.0
+offset_right = 60.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="MinerButton" type="Button" parent="CharacterButtons"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_jgajx")
+
+[node name="Icon" type="TextureRect" parent="CharacterButtons/MinerButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_pqyse")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="OccultistButton" type="Button" parent="CharacterButtons"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jgajx")
+
+[node name="Icon" type="TextureRect" parent="CharacterButtons/OccultistButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cyldt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VagabondButton" type="Button" parent="CharacterButtons"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jgajx")
+
+[node name="Icon" type="TextureRect" parent="CharacterButtons/VagabondButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_icpre")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CharacterButtons/MinerButton" to="." method="_on_miner_button_pressed"]
+[connection signal="pressed" from="CharacterButtons/OccultistButton" to="." method="_on_occultist_button_pressed"]
+[connection signal="pressed" from="CharacterButtons/VagabondButton" to="." method="_on_vagabond_button_pressed"]
